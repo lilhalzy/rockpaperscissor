@@ -144,3 +144,52 @@ header > h1 {
 .footer:hover {
   opacity: 1;
 }
+
+
+@media (min-width: 360px) {
+  .main {
+    margin: 2rem 0 0;
+  }
+  .scoreboard > .score-info {
+    font-size: 1.8rem;
+  }
+  .scoreboard > .score-subtitle {
+    font-size: .7rem;
+  }
+  .score-box > .sign {
+    font-size: 7rem;
+  }
+  .btn-box {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (min-width: 540px) {
+  header {
+    font-size: 1.4rem;
+  }
+  .scoreboard > .score-info {
+    font-size: 3.2rem;
+  }
+  .scoreboard > .score-subtitle {
+    font-size: 1.2rem;
+  }
+  .scoreboard > .score-container{
+    max-width: 600px;
+  }
+  .score-box {
+    width: 300px;
+    height: 280px;
+  }
+  .score{
+    font-size: 2rem;
+  }
+  .btn-box {
+    width: 140px;
+    height: 140px;
+  }
+  .sign {
+    font-size: 4rem;
+  }
+}
