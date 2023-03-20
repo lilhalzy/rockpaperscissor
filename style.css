@@ -1,1 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
+:root {
+  --p-blk-clr: #252525;
+  --p-ylw-clr: #fde000;
+  --h-ylw-clr: #ffed65;
+  --s-wht-clr: #fdfdfe;
+  --g-header: hsla(53, 100%, 50%, 0.9);
+}
+
+html {
+  position: relative;
+  min-height: 100vh;
+  font-size: 1rem;
+  border: 1px solid #fde000;
+}
+
+body {
+  background: var(--p-blk-clr);
+  color: var(--s-wht-clr);
+  font-family: 'Thermal', sans-serif;
+  /* good typography makes it easier to read */
+  line-height: 1.6;
+  margin: 0 0 3rem;
+  border: 1px solid #000;
+}
