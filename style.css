@@ -91,7 +91,7 @@ header > h1 {
 .buttons {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   margin: 3rem 0 0;
 }
 
@@ -203,6 +203,9 @@ display: block;
   .score-box > .sign {
     font-size: 7rem;
   }
+  .buttons {
+    gap: 2rem;
+  }
   .btn-box {
     width: 90px;
     height: 90px;
@@ -228,6 +231,9 @@ display: block;
   }
   .score{
     font-size: 2rem;
+  }
+  .buttons {
+    gap: 2rem;
   }
   .btn-box {
     width: 140px;
