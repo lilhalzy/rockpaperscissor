@@ -112,6 +112,44 @@ function updateChoices(humanSelection, aiSelection) {
   }
 }
 
+function updateScore() {
+    if (roundWinner === 'Tie') {
+      scoreInfo.textContent = "It's a tie!";
+    } else if (roundWinner === 'Human') {
+      scoreInfo.textContent = 'uwu u got that right!';
+    } else if (roundWinner === 'AI') {
+      scoreInfo.textContent = 'NO! AI is smarter!';
+    }
+  
+    humanScorePara.textContent = `Score: ${humanScore}`;
+    aiScorePara.textContent = `Score: ${aiScore}`;
+  }
+  
+  function updateScoreMsg(winner, humanSelection, aiSelection) {
+    if (winner === 'Human') {
+      scoreMessage.textContent = `${capitalFirstLetter(
+        humanSelection
+      )} beats ${aiSelection.toLowerCase()}`;
+      return;
+    }
+  
+    if (winner === 'AI') {
+      scoreMessage.textContent = `${capitalFirstLetter(
+        humanSelection
+      )} is beaten by ${aiSelection.toLowerCase()}`;
+      return;
+    }
+  
+    scoreMessage.textContent = `${capitalFirstLetter(
+      humanSelection
+    )} ties with ${aiSelection.toLowerCase()}`;
+    return;
+}
+function capitalFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+
 function openEndGameModal() {
     endGameModal.classList.add('active');
     overlay.classList.add('active');
@@ -127,6 +165,7 @@ function openEndGameModal() {
       humanScore > aiScore
         ? (endGameMsg.textContent = 'Human won!')
         : (endGameMsg.textContent = 'Ur ded');
+    restartBtn.textContent = `${capitalFirstLetter('start over')}`
   }
   
   function restartGame() {
