@@ -56,15 +56,24 @@ const endGameModal = document.querySelector('#endGameModal');
 const endGameMsg = document.querySelector('#endGameMsg');
 const overlay = document.querySelector('#overlay');
 const restartBtn = document.querySelector('#restartBtn');
+const gameOverSound = document.querySelector('#gameOverSound');
+const gameOverClickSound = document.querySelector('#gameOverClickSound');
+const btnSound = document.querySelector('#btnSound');
 
 rockBtn.addEventListener('click', () => {
   handleClick('ROCK');
+  btnSound.volume = 0.6;
+  btnSound.play();
 });
 paperBtn.addEventListener('click', () => {
   handleClick('PAPER');
+  btnSound.volume = 0.6;
+  btnSound.play();
 });
 scissorsBtn.addEventListener('click', () => {
   handleClick('SCISSORS');
+  btnSound.volume = 0.6;
+  btnSound.play();
 });
 restartBtn.addEventListener('click', restartGame);
 overlay.addEventListener('click', (e) => e.preventDefault());
@@ -153,11 +162,15 @@ function capitalFirstLetter(string) {
 function openEndGameModal() {
     endGameModal.classList.add('active');
     overlay.classList.add('active');
+    gameOverSound.volume = 0.4;
+    gameOverSound.play();
   }
 
   function closeEndGameModal() {
     endGameModal.classList.remove('active');
     overlay.classList.remove('active');
+    gameOverClickSound.volume = 0.6;
+    gameOverClickSound.play();
   }
   
   function setFinalMsg() {
