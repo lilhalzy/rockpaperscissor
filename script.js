@@ -52,6 +52,10 @@ const aiSign = document.querySelector('#aiSign');
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
+const endGameModal = document.querySelector('#endGameModal');
+const endGameMsg = document.querySelector('#endGameMsg');
+const overlay = document.querySelector('#overlay');
+const restartBtn = document.querySelector('#restartBtn');
 
 rockBtn.addEventListener('click', () => {
   handleClick('ROCK');
@@ -62,6 +66,8 @@ paperBtn.addEventListener('click', () => {
 scissorsBtn.addEventListener('click', () => {
   handleClick('SCISSORS');
 });
+restartBtn.addEventListener('click', restartGame);
+overlay.addEventListener('click', (e) => e.preventDefault());
 
 
 function handleClick(humanSelection) {
@@ -75,6 +81,10 @@ function handleClick(humanSelection) {
   updateChoices(humanSelection, aiSelection);
   updateScore();
 
+  if (gameOver()) {
+    openEndGameModal();
+    setFinalMsg();
+  }
 }
 
 function updateChoices(humanSelection, aiSelection) {
@@ -101,3 +111,8 @@ function updateChoices(humanSelection, aiSelection) {
       break;
   }
 }
+
+function openEndGameModal() {
+    endGameModal.classList.add('active');
+    overlay.classList.add('active');
+  }
