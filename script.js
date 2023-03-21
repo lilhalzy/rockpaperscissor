@@ -116,3 +116,31 @@ function openEndGameModal() {
     endGameModal.classList.add('active');
     overlay.classList.add('active');
   }
+
+  function closeEndGameModal() {
+    endGameModal.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+  
+  function setFinalMsg() {
+    endGameMsg.textContent =
+      humanScore > aiScore
+        ? (endGameMsg.textContent = 'Human won!')
+        : (endGameMsg.textContent = 'Ur ded');
+  }
+  
+  function restartGame() {
+    humanScore = 0;
+    aiScore = 0;
+  
+    scoreInfo.textContent = 'Choose your weaponz';
+    scoreMessage.textContent = 'First to shoot 5 points wins the game';
+    humanScorePara.textContent = 'Human: 0';
+    aiScorePara.textContent = 'AI: 0';
+  
+    humanSign.textContent = '❔';
+    aiSign.textContent = '❔';
+  
+    closeEndGameModal();
+  }
+  
