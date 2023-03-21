@@ -59,6 +59,7 @@ const restartBtn = document.querySelector('#restartBtn');
 const gameOverSound = document.querySelector('#gameOverSound');
 const gameOverClickSound = document.querySelector('#gameOverClickSound');
 const btnSound = document.querySelector('#btnSound');
+const victorySound = document.querySelector('#victorySound');
 
 rockBtn.addEventListener('click', () => {
   handleClick('ROCK');
@@ -138,38 +139,43 @@ function updateScore() {
     if (winner === 'Human') {
       scoreMessage.textContent = `${capitalFirstLetter(
         humanSelection
-      )} beats ${aiSelection.toLowerCase()}`;
-      return;
+        )} beats ${aiSelection.toLowerCase()}`;
+        return;
     }
-  
+    
     if (winner === 'AI') {
-      scoreMessage.textContent = `${capitalFirstLetter(
-        humanSelection
-      )} is beaten by ${aiSelection.toLowerCase()}`;
+        scoreMessage.textContent = `${capitalFirstLetter(
+            humanSelection
+            )} is beaten by ${aiSelection.toLowerCase()}`;
       return;
     }
-  
+    
     scoreMessage.textContent = `${capitalFirstLetter(
-      humanSelection
-    )} ties with ${aiSelection.toLowerCase()}`;
-    return;
-}
-function capitalFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
-
-function openEndGameModal() {
-    endGameModal.classList.add('active');
-    overlay.classList.add('active');
-    gameOverSound.volume = 0.4;
-    gameOverSound.play();
-  }
-
-  function closeEndGameModal() {
-    endGameModal.classList.remove('active');
-    overlay.classList.remove('active');
-    gameOverClickSound.volume = 0.6;
+        humanSelection
+        )} ties with ${aiSelection.toLowerCase()}`;
+        return;
+    }
+    function capitalFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+    
+    
+    function openEndGameModal() {
+        endGameModal.classList.add('active');
+        overlay.classList.add('active');
+        if (roundWinner == 'AI') {
+          gameOverSound.volume = 0.4;
+          gameOverSound.play();
+        } else {
+          victorySound.volume = 0.6
+          victorySound.play();
+        }
+      }
+    
+    function closeEndGameModal() {
+        endGameModal.classList.remove('active');
+        overlay.classList.remove('active');
+        gameOverClickSound.volume = 0.6;
     gameOverClickSound.play();
   }
   
