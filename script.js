@@ -81,11 +81,6 @@ overlay.addEventListener('click', (e) => e.preventDefault());
 
 
 function handleClick(humanSelection) {
-  if (gameOver()) {
-    openEndGameModal();
-    return;
-  }
-
   const aiSelection = roulette();
   playRound(humanSelection, aiSelection);
   updateChoices(humanSelection, aiSelection);
@@ -159,17 +154,18 @@ function updateScore() {
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     }
     
-    
     function openEndGameModal() {
         endGameModal.classList.add('active');
         overlay.classList.add('active');
         if (roundWinner == 'AI') {
-          gameOverSound.volume = 0.4;
-          gameOverSound.play();
+            gameOverSound.volume = 0.4;
+            gameOverSound.play();
         } else {
-          victorySound.volume = 0.6
-          victorySound.play();
+            victorySound.volume = 0.6
+            victorySound.play();
         }
+        // block double-click/spam-click event that will cause weird auto-select and sidebar
+        overlay.style.userSelect = 'none';
       }
     
     function closeEndGameModal() {
@@ -201,4 +197,3 @@ function updateScore() {
   
     closeEndGameModal();
   }
-  
